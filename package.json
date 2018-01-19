@@ -1,0 +1,30 @@
+{
+  "name": "cyclops",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "babel  index.js -o cyclops.js",
+    "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.1",
+    "flow-bin": "^0.61.0",
+    "jest": "^21.2.1",
+    "prettier": "^1.9.1"
+  },
+  "dependencies": {
+    "babel-jest": "^22.0.4"
+  }
+}
