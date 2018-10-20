@@ -1,21 +1,27 @@
-
 interface CyclopsEvent {
-	[key: string]: any[]
+  [key: string]: any[];
 }
 
 interface CyclopsOptions {
-	debug?: true;
+  debug?: true;
 }
 
-class Cyclops {
-	events: CyclopsEvent;
-	debug?: boolean;
-	public constructor(events = {}, options: CyclopsOptions) {
-		this.events = events;
-	}
+const debug = (title: string): string => `|--- ${title} ---|`;
 
-	subscribe(name: string, cb: Function) {
+class Cyclops {
+  events: CyclopsEvent;
+  debug?: boolean;
+  public constructor(events = {}, options: CyclopsOptions) {
+    this.events = events;
+    this.debug = options.debug;
+  }
+
+  public subscribe(name: string, cb: Function) {
     (this.events[name] || (this.events[name] = [])).push(cb);
+
+    if (this.debug) {
+      console.log(debug("EVENTS"), this.events);
+    }
 
     return {
       release: () =>
@@ -25,10 +31,11 @@ class Cyclops {
   }
 
   public emit(name: string, ...args: any[]) {
+    if (this.debug) {
+      console.log(debug("EVENTS"), name, this.events[name].map(fn => fn));
+    }
+
     return (this.events[name] || []).map(fn => fn(...args));
   }
 }
-
-
-
-export default Cyclops
+export default Cyclops;
