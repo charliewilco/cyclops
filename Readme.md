@@ -1,6 +1,6 @@
-<span align="center">
+<h6 align="center">
   <img src="./cyclops.svg" />
-</span>
+</h6>
 
 <h1 align="center">Cyclops</h1>
 
