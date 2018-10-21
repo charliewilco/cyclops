@@ -1,5 +1,5 @@
 {
-  "name": "cyclops",
+  "name": "@charliewilco/cyclops",
   "version": "1.0.0",
   "main": "dist/cyclops.js",
   "types": "dist/cyclops.d.ts",

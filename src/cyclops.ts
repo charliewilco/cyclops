@@ -6,6 +6,10 @@ interface CyclopsOptions {
   debug?: true;
 }
 
+ /**
+  * Adapted from 'https://gist.github.com/kutyel/7d8f204a347840a6ee7220743957e504'
+  */
+
 const debug = (title: string): string => `|--- ${title} ---|`;
 
 class Cyclops {
