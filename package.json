@@ -6,6 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
+    "prepare": "tsc",
     "test": "jest"
   },
   "jest": {
