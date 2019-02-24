@@ -48,7 +48,7 @@ yarn add @charliewilco/cyclops
 ### Basic
 
 ```js
-const emit = new Cyclops({}, { debug: true });
+const emit = new Cyclops();
 let val = 0;
 
 emit.subscribe("mock event", (n: number) => (val = n));
@@ -58,20 +58,19 @@ emit.emit("mock event", 18);
 ### Polling
 
 ```js
-const emit = new Cyclops();
-
-class Poller {
+class Poller extends Cyclops {
   constructor(timeout = 500) {
     this.timeout = timeout;
   }
-  poll() {
-    setTimeout(() => emit.emit("poll"), this.timeout);
+  public poll() {
+    setTimeout(() => this.emit("poll"), this.timeout);
   }
 
-  onPoll(cb) {
-    emit.subscribe("poll", cb);
+  public onPoll(cb) {
+    this.subscribe("poll", cb);
   }
 }
+
 let count = 0;
 const poll = new Poller(1000);
 
